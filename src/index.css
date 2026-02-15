@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'primaryFont';
+  src: url('../fonts/NeueMontreal-Regular.otf');
+}
+
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'primaryFont';
+}
+
+body,html{
+  width: 100%;
+  height: 100%; 
+  overflow-x: hidden;
+}
