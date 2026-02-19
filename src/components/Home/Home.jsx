@@ -1,21 +1,25 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "remixicon/fonts/remixicon.css";
 
-function Home() {
+gsap.registerPlugin(ScrollTrigger);
+
+function Home({ videoRef }) {
   const name = useRef(null);
   const globe = useRef(null);
   const text = useRef(null);
   const location = useRef(null);
-  const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
   useGSAP(
     () => {
-      const video = videoRef.current;
-    video.currentTime = 0.2; 
 
-      gsap.to(globe.current, {
+      const video=videoRef.current;
+      videoRef.current.play();
+      gsap
+      .to(globe.current, {
         rotation: 360,
         duration: 2,
 
@@ -23,17 +27,15 @@ function Home() {
         ease: "none",
       });
 
+
       const master = gsap.timeline();
 
       master
-        .call(() => {
-          videoRef.current.play();
-        })
         .from(name.current, {
-          delay: 1,
-          yPercent: -300,
+          delay: 0.5,
+          yPercent: -500,
           opacity: 0,
-          duration: 2.5,
+          duration: 2,
           ease: "none",
         });
 
@@ -74,32 +76,42 @@ function Home() {
           },
           "<",
         );
+
+
+        
+      
     },
     {
-      scope: "#profile",
+      scope: containerRef ,
     },
   );
   return (
     <div
-      className="relative h-screen w-screen flex justify-center items-end bg-[#DDDDE1]"
+      className="relative h-[100vh]  w-screen flex justify-center items-end bg-[#DDDDE1]"
       id="profile"
+      ref={containerRef}
     >
       <video
         src="./video/HeroSectionVideo.mp4"
-        className="h-auto z-10 max-h-[80vh] md:max-h-[80vh] lg:h-[40rem] w-auto max-w-full object-contain"
+        className="fixed  top-40 left-1/2 -translate-x-1/2
+             z-10 max-h-[80vh] lg:h-[40rem] w-auto
+             object-contain"
         muted
         playsInline
         preload="auto"
         ref={videoRef}
+        id="hero-video"
       ></video>
 
       <div
-        className="absolute  top-[30rem] flex flex-col gap-0 z-50 will-change-transform"
+        className="absolute  top-20 flex flex-col gap-0 z-50 will-change-transform"
         ref={name}
-        id="together"
       >
         <h3 className="text-3xl font-bold text-[#14213d] ">Hello, I'm</h3>
-        <h1 className="text-[8rem] leading-none font-bold text-[#2563EB] text-shadow-black text-shadow-lg">
+        <h1
+          className="text-[5rem] leading-none font-bold text-[#2563EB] text-shadow-black text-shadow-sm"
+          id="Name"
+        >
           Gourav Sharma
         </h1>
       </div>
@@ -108,7 +120,7 @@ function Home() {
         className="z-10 absolute translate-y-[-50%] rounded-r-full h-[7rem] w-[15rem] top-[50vh] left-0 flex items-center justify-around bg-[#14213d] text-[#DDDDE1]"
         ref={location}
       >
-        <div className="text-xl leading-tight">
+        <div className="text-2xl leading-tight">
           <p>Located</p>
           <p>in</p>
           <p>India</p>
@@ -128,7 +140,7 @@ function Home() {
       </div>
 
       <div
-        className="absolute top-1/2 -translate-y-1/2 right-0
+        className="absolute top-[50vh] translate-y-[-50%] right-0
         w-[25rem]
         flex flex-col gap-3
         items-end

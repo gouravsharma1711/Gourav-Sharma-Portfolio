@@ -14,11 +14,11 @@ function HomeAnimation({ onComplete }) {
       (t) => {
         tl.to(t, {
           opacity: 1,
-          duration: 0.15,
+          duration: 0.10,
           ease: "steps(12)",
         }).to(t, {
           opacity: 0,
-          duration: 0.15,
+          duration: 0.10,
           ease: "steps(12)",
         });
       },
@@ -38,11 +38,13 @@ function HomeAnimation({ onComplete }) {
       ref={homeAnimationMainDivRef}
       className="w-full h-full fixed flex flex-col justify-center items-center z-[999]  text-[#DDDDE1] bg-[#14213d] text-3xl font-bold"
     >
-      <h1 className="position absolute opacity-0">• Hello</h1>
-      <h1 className="position absolute opacity-0">• नमस्ते</h1>
-      <h1 className="position absolute opacity-0">• Bonjour</h1>
-      <h1 className="position absolute opacity-0">• こんにちは</h1>
-      <h1 className="position absolute opacity-0">• Hola</h1>
+      <h1 className="absolute opacity-0">• Hello</h1>     
+<h1 className="absolute opacity-0">• नमस्ते</h1> 
+<h1 className="absolute opacity-0">• Bonjour</h1> 
+<h1 className="absolute opacity-0">• こんにちは</h1> 
+<h1 className="absolute opacity-0">• Hola</h1>     
+<h1 className="absolute opacity-0">• Hallo</h1>   
+<h1 className="absolute opacity-0">• Ciao</h1>    
     </div>
   );
 }

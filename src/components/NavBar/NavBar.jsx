@@ -28,7 +28,7 @@ function NavBar() {
   </NavLink>
 
   <div className="flex gap-8">
-    <NavLink to="/work">Work</NavLink>
+    <NavLink to="/work">Projects</NavLink>
     <NavLink to="/about">About</NavLink>
     <NavLink to="/contact">Contact</NavLink>
   </div>
